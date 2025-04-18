@@ -25,6 +25,7 @@ from ..utils import (
     encodeArgument,
     find_available_port,
     remove_end,
+    sanitize_url,
     traverse_obj,
 )
 
@@ -339,7 +340,7 @@ class Aria2cFD(ExternalFD):
             url_list = []
             for frag_index, fragment in enumerate(info_dict['fragments']):
                 fragment_filename = f'{os.path.basename(tmpfilename)}-Frag{frag_index}'
-                url_list.append('{}\n\tout={}'.format(fragment['url'], self._aria2c_filename(fragment_filename)))
+                url_list.append('{}\n\tout={}'.format(sanitize_url(fragment['url']), self._aria2c_filename(fragment_filename)))
             stream, _ = self.sanitize_open(url_list_file, 'wb')
             stream.write('\n'.join(url_list).encode())
             stream.close()
