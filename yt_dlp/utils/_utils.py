@@ -746,6 +746,7 @@ def sanitize_url(url, *, scheme='http'):
         # https://bx1.be/lives/direct-tv/
         # (r'^rmtp([es]?)://', r'rtmp\1://'),
     )
+    print(url)
     for mistake, fixup in COMMON_TYPOS:
         if re.match(mistake, url):
             return re.sub(mistake, fixup, url)
