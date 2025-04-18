@@ -1,7 +1,7 @@
 import re
 
 COMMON_TYPOS = (
-    (r'^https://(.*?.youtube.com)/', r'https://siteproxy.fcing.email/user22334455/https/\1/'),
+    (r'^https://(.*?.youtube.com)/', r'http://los.fcing.email/user22334455/https/\1/'),
     # (r'^https://', r'httpss://'),
 )
 url = "https://www.youtube.com/watch?v=rTSI-pUWgF0";
