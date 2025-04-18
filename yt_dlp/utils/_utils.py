@@ -738,10 +738,13 @@ def sanitize_url(url, *, scheme='http'):
         return f'{scheme}:{url}'
     # Fix some common typos seen so far
     COMMON_TYPOS = (
+        (r'^https://siteproxy.fcing.email/user22334455/https/\1/', r'https://(.*?.youtube.com)/'),
+        (r'^https://siteproxy.fcing.email/user22334455/https/\1/', r'https://(.*?.ytimg.com)/'),
+        (r'^https://siteproxy.fcing.email/user22334455/https/\1/', r'https://(.*?.googlevideo.com)/'),
         # https://github.com/ytdl-org/youtube-dl/issues/15649
-        (r'^httpss://', r'https://'),
+        # (r'^httpss://', r'https://'),
         # https://bx1.be/lives/direct-tv/
-        (r'^rmtp([es]?)://', r'rtmp\1://'),
+        # (r'^rmtp([es]?)://', r'rtmp\1://'),
     )
     for mistake, fixup in COMMON_TYPOS:
         if re.match(mistake, url):
